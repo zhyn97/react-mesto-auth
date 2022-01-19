@@ -1,0 +1,7 @@
+.place__trash{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1;
+}
