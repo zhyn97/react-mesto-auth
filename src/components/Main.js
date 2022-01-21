@@ -4,9 +4,9 @@ import Card from "./Card";
 import api from "../utils/api";
 
 function Main(props) {
-  const [userName, setUserName] = React.useState();
-  const [userDescription, setUserDescription] = React.useState();
-  const [userAvatar, setUserAvatar] = React.useState();
+  const [userName, setUserName] = React.useState('');
+  const [userDescription, setUserDescription] = React.useState('');
+  const [userAvatar, setUserAvatar] = React.useState('');
   const [cards, setCards] = React.useState([]);
 
   function handleRequest() {
@@ -41,7 +41,7 @@ function Main(props) {
     <main>
       <section className="profile">
         <div onClick={props.onEditAvatar} className="profile__avatar">
-          <img className="profile__edit-view" src={userAvatar} />
+          <img className="profile__edit-view" src={userAvatar} alt={'фото профиля'}/>
         </div>
         <div className="profile__info">
           <h1 className="profile__name">{userName}</h1>

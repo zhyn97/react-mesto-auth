@@ -15,7 +15,7 @@ class Api {
   getUserData() {
     return fetch(`${this.address}/users/me`, {
       headers: {
-        authorization: "375f8480-1170-4121-a89c-9ffd6ccda63c",
+        authorization: this.token,
       },
     }).then(this._checkResponse);
   }
@@ -23,7 +23,7 @@ class Api {
   getCards() {
     return fetch(`${this.address}/cards`, {
       headers: {
-        authorization: "375f8480-1170-4121-a89c-9ffd6ccda63c",
+        authorization: this.token,
       },
     }).then(this._checkResponse);
   }
@@ -32,7 +32,7 @@ class Api {
     return fetch(`${this.address}/users/me`, {
       method: "PATCH",
       headers: {
-        authorization: "375f8480-1170-4121-a89c-9ffd6ccda63c",
+        authorization: this.token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -46,7 +46,7 @@ class Api {
     return fetch(`${this.address}/cards`, {
       method: "POST",
       headers: {
-        authorization: "375f8480-1170-4121-a89c-9ffd6ccda63c",
+        authorization: this.token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -60,7 +60,7 @@ class Api {
     return fetch(`${this.address}/cards/${id}`, {
       method: "DELETE",
       headers: {
-        authorization: "375f8480-1170-4121-a89c-9ffd6ccda63c",
+        authorization: this.token,
       },
     }).then(this._checkResponse);
   }
@@ -69,7 +69,7 @@ class Api {
     return fetch(`${this.address}/cards/${id}/likes`, {
       method: "PUT",
       headers: {
-        authorization: "375f8480-1170-4121-a89c-9ffd6ccda63c",
+        authorization: this.token,
       },
     }).then(this._checkResponse);
   }
@@ -78,7 +78,7 @@ class Api {
     return fetch(`${this.address}/cards/${id}/likes`, {
       method: "DELETE",
       headers: {
-        authorization: "375f8480-1170-4121-a89c-9ffd6ccda63c",
+        authorization: this.token,
       },
     }).then(this._checkResponse);
   }
@@ -87,7 +87,7 @@ class Api {
     return fetch(`${this.address}/users/me/avatar`, {
       method: "PATCH",
       headers: {
-        authorization: "375f8480-1170-4121-a89c-9ffd6ccda63c",
+        authorization: this.token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
