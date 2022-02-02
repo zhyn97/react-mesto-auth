@@ -4,7 +4,7 @@ class Api {
     this.token = token;
   }
 
-  _checkResponse(res){
+  _checkResponse(res) {
     if (res.ok) {
       return res.json();
     } else {
@@ -72,6 +72,24 @@ class Api {
         authorization: this.token,
       },
     }).then(this._checkResponse);
+  }
+
+  changeLikeCardStatus(cardId, isLiked) {
+    if (!isLiked) {
+      return fetch(`${this.address}/cards/${cardId}/likes`, {
+        method: "DELETE",
+        headers: {
+          authorization: this.token,
+        },
+      }).then(this._checkResponse);
+    } else {
+      return fetch(`${this.address}/cards/${cardId}/likes`, {
+        method: "PUT",
+        headers: {
+          authorization: this.token,
+        },
+      }).then(this._checkResponse);
+    }
   }
 
   deleteLike(id) {
