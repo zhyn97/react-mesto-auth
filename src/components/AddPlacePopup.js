@@ -22,6 +22,12 @@ function AddPlacePopup(props) {
     });
   }
 
+  React.useEffect(() => {
+    setName('');
+    setLink('');
+  }, [props.isOpen]);
+
+
   return (
     <PopupWithForm
       title={"Новое место"}
@@ -41,6 +47,7 @@ function AddPlacePopup(props) {
         maxLength="30"
         required
         onChange={handleName}
+        value={name || ""}
       />
       <span id="citi-name-error" className="error"></span>
       <input
@@ -51,6 +58,7 @@ function AddPlacePopup(props) {
         placeholder="Ссылка на картинку"
         required
         onChange={handleLink}
+        value={link || ""}
       />
       <span id="city-link-error" className="error"></span>
     </PopupWithForm>

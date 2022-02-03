@@ -12,6 +12,17 @@ function EditAvatarPopup(props) {
     });
   }
 
+  function handleClick(e){
+      console.log(e.target)
+      if(e.target === 'popup popup-avatar popup_active'){
+          props.onClose()
+      }
+  }
+
+  React.useEffect(() => {
+    avatarRef.current.value = "";
+  }, [props.isOpen]);
+
   return (
     <PopupWithForm
       title={"Обновить аватар"}
