@@ -22,7 +22,7 @@ function Card(props) {
 
   return (
     <div className="place">
-      <img onClick={handleDeleteClick} src={trashImg} className={`${isOwn ? 'place__trash_active' : 'place__trash_hidden'} opacity-button`} />
+      <img alt="иконка удаления" onClick={handleDeleteClick} src={trashImg} className={`${isOwn ? 'place__trash_active' : 'place__trash_hidden'} opacity-button`} />
       <img
         onClick={handleClick}
         src={props.link}
