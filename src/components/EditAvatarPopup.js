@@ -12,12 +12,12 @@ function EditAvatarPopup(props) {
     });
   }
 
-  function handleClick(e){
-      console.log(e.target)
-      if(e.target === 'popup popup-avatar popup_active'){
-          props.onClose()
-      }
-  }
+  // function handleClick(e){
+  //     console.log(e.target)
+  //     if(e.target === 'popup popup-avatar popup_active'){
+  //         props.onClose()
+  //     }
+  // }
 
   React.useEffect(() => {
     avatarRef.current.value = "";
