@@ -24,12 +24,13 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] =
     React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
-  const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = React.useState(false);
+  const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] =
+    React.useState(false);
   const [registerStatus, setRegisterStatus] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
   const [selectedCard, setSelectedCard] = React.useState({});
   const [loggedIn, setLoggedIn] = React.useState(false);
-  const [email, setEmail] = React.useState('');
+  const [email, setEmail] = React.useState("");
   const history = useHistory();
 
   function handleEditProfileClick() {
@@ -151,6 +152,17 @@ function App() {
     localStorage.removeItem("token");
   }
 
+  React.useEffect(() => {
+    const closeByEscape = (e) => {
+      if (e.key === "Escape") {
+        closeAllPopups();
+      }
+    };
+
+    document.addEventListener("keydown", closeByEscape);
+
+    return () => document.removeEventListener("keydown", closeByEscape);
+  }, []);
 
   React.useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -181,7 +193,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="root">
-        <Header signOut={signOut} email={email}/>
+        <Header signOut={signOut} email={email} />
 
         <Switch>
           <ProtectedRoute exact path="/" loggedIn={loggedIn}>
@@ -230,7 +242,7 @@ function App() {
           onCardAdd={handleAddPlaceSubmit}
         />
 
-        <InfoTooltip 
+        <InfoTooltip
           isOpen={isInfoTooltipPopupOpen}
           onClose={closeAllPopups}
           TextRegisterOk={"Вы успешно зарегистрировались!"}
