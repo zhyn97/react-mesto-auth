@@ -7,3 +7,9 @@
   margin-top: 180px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 760px) {
+  .entrance-page__button{
+    width: 260px
+  }
+}

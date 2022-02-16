@@ -10,12 +10,14 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
-import { Route, Switch, Redirect, useHistory} from "react-router-dom";
+import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
 import ProtectedRoute from "./ProtectedRoute";
 import { register, authorize, checkToken } from "../utils/auth";
 import InfoTooltip from "./InfoTooltip";
+import MobileMenu from "./MobileMenu";
+import NotFound from "./NotFound";
 
 function App() {
   const [cards, setCards] = React.useState([]);
@@ -26,12 +28,23 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] =
     React.useState(false);
+  const [isMobileMenu, setIsMobileMenu] = React.useState(false)
+  const [width, setWidth] = React.useState(window.innerWidth);
   const [registerStatus, setRegisterStatus] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
   const [selectedCard, setSelectedCard] = React.useState({});
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [email, setEmail] = React.useState("");
   const history = useHistory();
+
+
+  function openMobileMenu() {
+    setIsMobileMenu(true);
+  }
+
+  function closeMobileMenu() {
+    setIsMobileMenu(false);
+  }
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
@@ -150,7 +163,17 @@ function App() {
 
   function signOut() {
     localStorage.removeItem("token");
+    setIsMobileMenu(false);
   }
+
+  function handleResize() {
+    setWidth(window.innerWidth);
+  }
+
+  React.useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   React.useEffect(() => {
     const closeByEscape = (e) => {
@@ -193,7 +216,8 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="root">
-        <Header signOut={signOut} email={email} />
+        <MobileMenu signOut={signOut} isOpen={isMobileMenu} email={email} />
+        <Header signOut={signOut} email={email} width={width} closeMobileMenu={closeMobileMenu} openMobileMenu={openMobileMenu} isMobileMenu={isMobileMenu} />
 
         <Switch>
           <ProtectedRoute exact path="/" loggedIn={loggedIn}>
@@ -217,8 +241,8 @@ function App() {
             <Register handleRegister={handleRegister} />
           </Route>
 
-          <Route exact path="/">
-            {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
+          <Route path="*">
+            <NotFound />
           </Route>
         </Switch>
 

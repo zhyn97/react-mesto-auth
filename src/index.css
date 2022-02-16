@@ -2,10 +2,16 @@
 @import url(./vendor/fonts/fonts.css);
 @import url(./blocks/body/body.css);
 @import url(./blocks/root/root.css);
+@import url(./blocks/mobile-menu/mobile-menu.css);
+@import url(./blocks/mobile-menu/_active/mobile-menu_active.css);
+@import url(./blocks/mobile-menu/__text/mobile-menu__text.css);
+@import url(./blocks/mobile-menu/__link/mobile-menu__link.css);
 @import url(./blocks/header/header.css);
 @import url(./blocks/header/__link/header__link.css);
 @import url(./blocks/header/__text/header__text.css);
 @import url(./blocks/header/__navigation/header__navigation.css);
+@import url(./blocks/header/__icon-menu/header__icon-menu.css);
+@import url(./blocks/header/__icon-menu/_close/header__icon-menu_close.css);
 @import url(./blocks/logo/logo.css);
 @import url(./blocks/opacity-button/opacity-button.css);
 
@@ -66,3 +72,8 @@
 /* infoTooltip */
 @import url(./blocks/info-tooltip/__img/info-tooltip__img.css);
 @import url(./blocks/info-tooltip/__text/info-tooltip__text.css);
+
+/* not-found */
+@import url(./blocks/not-found/not-found.css);
+@import url(./blocks/not-found/__title/not-found__title.css);
+@import url(./blocks/not-found/__text/not-found__text.css);

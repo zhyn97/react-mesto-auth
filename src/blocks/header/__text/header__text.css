@@ -10,11 +10,6 @@
   color: #FFFFFF;
 }
 
-@media screen and (max-width: 1023px) {
-    .header__text {
-      margin: 32px 0 27px;
-    }
-  }
   
   @media screen and (max-width: 767px) {
     .header__text {

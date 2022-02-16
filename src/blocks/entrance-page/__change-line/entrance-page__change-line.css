@@ -18,3 +18,9 @@
 .entrance-page__change-line::-moz-placeholder {
   color: #cccccc;
 }
+
+@media screen and (max-width: 760px) {
+  .entrance-page__change-line{
+    min-width: 260px;
+  }
+}
